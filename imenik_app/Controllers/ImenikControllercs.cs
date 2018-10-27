@@ -71,7 +71,6 @@ namespace imenik_app.Controllers
         {
             var imenik = await context.Imeniki.FindAsync(id);
             if (imenik == null) { 
-                Console.WriteLine("banana");
                 return NotFound();
             }
             var imenikResource = mapper.Map<Imenik, ImenikResources>(imenik);

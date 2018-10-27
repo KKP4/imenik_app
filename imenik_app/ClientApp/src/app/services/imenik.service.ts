@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class ImenikService {
 
   constructor(private http: Http) { }
+
   create(imenik: any) {
     return this.http.post('/api/imenik', imenik)
       .map(res => res.json());

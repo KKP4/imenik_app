@@ -3,7 +3,7 @@
 <p>
   <a [routerLink]="['/imenik/new']" class="btn btn-primary">Nov Vnos</a>
 </p>
-<table class="table">
+<table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
   <thead>
     <tr>
       <th>ID</th>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -12,6 +13,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ImenikFormComponent } from './imenik-form/imenik-form.component';
 import { ImenikListComponent } from './imenik-list/imenik-list.component';
+import { DataTablesModule } from 'angular-datatables';
+import * as $ from 'jquery'
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { ImenikListComponent } from './imenik-list/imenik-list.component';
     HttpClientModule,
     HttpModule,
     FormsModule,
+    DataTablesModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'imenik/new', component: ImenikFormComponent },
