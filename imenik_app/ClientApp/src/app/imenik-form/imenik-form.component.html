@@ -1,0 +1,34 @@
+<h2 *ngIf="!imenik.id">Nov Vnos</h2>
+<h2 *ngIf="imenik.id">Uredi vnos</h2>
+<hr>
+<p>
+  <a [routerLink]="['/imenik']" class="btn btn-primary">Nazaj na seznam</a>
+</p>
+<form #f="ngForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="name">Ime</label>
+    <input type="text" id="ime" class="form-control" [(ngModel)]="imenik.ime" name="ime" required #ime="ngModel">
+    <div class="alert alert-danger" *ngIf="ime.touched && !ime.valid">Vnesi ime</div>
+  </div>
+
+  <div class="form-group">
+    <label for="title">Priimek</label>
+    <input type="text" id="priimek" class="form-control" [(ngModel)]="imenik.priimek" name="priimek" required #priimek="ngModel">
+    <div class="alert alert-danger" *ngIf="priimek.touched && !priimek.valid">Vnesi priimek.</div>
+  </div>
+
+  <div class="form-group">
+    <label for="authorName">Naslov</label>
+    <input type="text" id="naslov" class="form-control" [(ngModel)]="imenik.naslov" name="naslov" required #naslov="ngModel">
+    <div class="alert alert-danger" *ngIf="naslov.touched && !naslov.valid">Vnesi naslov</div>
+  </div>
+
+  <div class="form-group">
+    <label for="publisherName">Telefonska Številka</label>
+    <input type="text" id="telStevilka" class="form-control" [(ngModel)]="imenik.telStevilka" name="telStevilka" required #telStevilka="ngModel">
+    <div class="alert alert-danger" *ngIf="telStevilka.touched && !telStevilka.valid">Vnesi telefonsko številko</div>
+  </div>
+
+  <input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="Add" />
+  <input type="button" class="btn btn-danger" value="Delete" (click)="delete()" *ngIf="imenik.id" />
+</form>

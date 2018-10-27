@@ -1,0 +1,29 @@
+<h2>Imenik</h2>
+<hr>
+<p>
+  <a [routerLink]="['/imenik/new']" class="btn btn-primary">Nov Vnos</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ime</th>
+      <th>Priimek</th>
+      <th>Naslov</th>
+      <th>Telefonska Številka</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of imeniki">
+      <td>{{ o.id }}</td>
+      <td>{{ o.ime }}</td>
+      <td>{{ o.priimek }}</td>
+      <td>{{ o.naslov }}</td>
+      <td>{{ o.telStevilka }}</td>
+      <td>
+        <a [routerLink]="['/imenik/', o.id]">Popravi/Izbriši</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
