@@ -1,6 +1,8 @@
-﻿namespace imenik.Controllers.Resources
+﻿
+
+namespace imenik.Controllers.Resources
 { 
-    public class ImenikResources
+    public class KontaktResources
     {
         public int Id { get; set; }
         public string Ime { get; set; }

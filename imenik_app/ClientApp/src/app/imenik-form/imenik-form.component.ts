@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ImenikFormComponent implements OnInit {
 
-  imenik = {
+  kontakt = {
     id: 0,
   };
 
@@ -26,7 +26,7 @@ export class ImenikFormComponent implements OnInit {
 
     route.params.subscribe(p => {
       if (p['id']) {
-        this.imenik.id = p['id'];
+        this.kontakt.id = p['id'];
       }
     }, err => {
       if (err.status == 404)
@@ -37,18 +37,18 @@ export class ImenikFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.imenik.id) {
-      this.imenikService.getImenik(this.imenik.id)
+    if (this.kontakt.id) {
+      this.imenikService.getKontakt(this.kontakt.id)
         .subscribe(b => {
-          this.imenik = b;
+          this.kontakt = b;
         });
     }
 
   }
 
   submit() {
-    if (this.imenik.id != 0) {
-      this.imenikService.update(this.imenik)
+    if (this.kontakt.id != 0) {
+      this.imenikService.update(this.kontakt)
         .subscribe(x => {
           this.router.navigate(['/imenik'])
         });
@@ -56,7 +56,7 @@ export class ImenikFormComponent implements OnInit {
 
     else {
 
-      this.imenikService.create(this.imenik)
+      this.imenikService.create(this.kontakt)
         .subscribe(x => {
           this.router.navigate(['/imenik'])
         });
@@ -66,7 +66,7 @@ export class ImenikFormComponent implements OnInit {
 
   delete() {
     if (confirm("Ste prepričani?")) {
-      this.imenikService.delete(this.imenik.id)
+      this.imenikService.delete(this.kontakt.id)
         .subscribe(x => {
           this.router.navigate(['/imenik'])
         });

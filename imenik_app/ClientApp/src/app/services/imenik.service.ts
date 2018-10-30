@@ -12,7 +12,7 @@ export class ImenikService {
       .map(res => res.json());
   }
 
-  getImenik(id: any) {
+  getKontakt(id: any) {
     return this.http.get('/api/imenik/' + id)
     .map(res => res.json())
   }
@@ -28,7 +28,7 @@ export class ImenikService {
 
   }
 
-  getImeniki() {
+  getKontakti() {
     return this.http.get('/api/imenik')
      .map(res => res.json());
     

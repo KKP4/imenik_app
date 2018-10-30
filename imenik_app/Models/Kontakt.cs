@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 
 namespace imenik_app.Models
 {
-    public class Imenik
+    public class Kontakt
     {
         public int Id { get; set; }
         public string Ime { get; set; }
@@ -13,4 +14,5 @@ namespace imenik_app.Models
         public string Naslov { get; set; }
         public string TelStevilka { get; set; }
     }
+    
 }

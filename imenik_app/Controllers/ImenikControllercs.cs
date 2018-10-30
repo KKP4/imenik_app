@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
+
 namespace imenik_app.Controllers
 {
     [Route("api/imenik")]
@@ -27,62 +28,63 @@ namespace imenik_app.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ImenikResources>> GetImenik(ImenikResources imenikResource)
+        public async Task<IEnumerable<KontaktResources>> GetKontakti(KontaktResources imenikResource)
         {
-            var imenik = await context.Imeniki.ToListAsync();
+            var kontakti = await context.Kontakti.ToListAsync();
             
-            return mapper.Map<IEnumerable<Imenik>, IEnumerable<ImenikResources>>(imenik);
+            return mapper.Map<IEnumerable<Kontakt>, IEnumerable<KontaktResources>>(kontakti);
 
             
 
         }
        
         [HttpPost]
-        public async Task<IActionResult> CreateImenik([FromBody] ImenikResources imenikResource)
+        public async Task<IActionResult> CreateKontakt([FromBody] KontaktResources kontaktResource)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) { 
                 return BadRequest(ModelState);
+            }
 
-            var imenik = mapper.Map<ImenikResources, Imenik>(imenikResource);
-            Console.Write(imenik);
+            var kontakt = mapper.Map<KontaktResources, Kontakt>(kontaktResource);
+            
 
-            context.Imeniki.Add(imenik);
+            context.Kontakti.Add(kontakt);
             await context.SaveChangesAsync();
-            return Ok(imenik);
+            return Ok(kontakt);
 
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateImenik(int id, [FromBody] ImenikResources imenikResource)
+        public async Task<IActionResult> UpdateImenik(int id, [FromBody] KontaktResources imenikResource)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) { 
                 return BadRequest(ModelState);
-            var imenik = await context.Imeniki.FindAsync(id);
-            if (imenik == null)
+            }
+            var kontakt = await context.Kontakti.FindAsync(id);
+            if (kontakt == null)
                 return NotFound();
-            Console.Write(imenik);
-            mapper.Map<ImenikResources, Imenik>(imenikResource, imenik);
-            Console.Write(imenik);
+            mapper.Map<KontaktResources, Kontakt>(imenikResource, kontakt);
+            
             await context.SaveChangesAsync();
-            return Ok(imenik);
+            return Ok(kontakt);
 
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetImenik(int id)
+        public async Task<IActionResult> GetKontakt(int id)
         {
-            var imenik = await context.Imeniki.FindAsync(id);
-            if (imenik == null) { 
+            var kontakt = await context.Kontakti.FindAsync(id);
+            if (kontakt == null) { 
                 return NotFound();
             }
-            var imenikResource = mapper.Map<Imenik, ImenikResources>(imenik);
-            return Ok(imenikResource);
+            var kontaktResource = mapper.Map<Kontakt, KontaktResources>(kontakt);
+            return Ok(kontaktResource);
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteImenik(int id)
+        public async Task<IActionResult> DeleteKontakt(int id)
         {
-            var imenik = await context.Imeniki.FindAsync(id);
-            if (imenik == null)
+            var kontakt = await context.Kontakti.FindAsync(id);
+            if (kontakt == null)
                 return NotFound();
-            context.Remove(imenik);
+            context.Remove(kontakt);
             await context.SaveChangesAsync();
             return Ok(id);
         }

@@ -12,6 +12,6 @@ namespace imenik_app.imenikDB
         public ImenikDbContext(DbContextOptions<ImenikDbContext> options)
             : base(options) { }
 
-        public DbSet<Imenik> Imeniki { get; set; }
+        public DbSet<Kontakt> Kontakti { get; set; }
     }
 }

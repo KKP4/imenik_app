@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 })
 export class ImenikListComponent implements OnInit {
 
-  imeniki: any[] = [];
+  kontakti: any[] = [];
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
   
@@ -29,9 +29,9 @@ export class ImenikListComponent implements OnInit {
       pageLength: 2
     };
 
-    this.imenikService.getImeniki()
-      .subscribe(imeniki => {
-        this.imeniki = imeniki;
+    this.imenikService.getKontakti()
+      .subscribe(kontakti => {
+        this.kontakti = kontakti;
         this.dtTrigger.next();
         
       });

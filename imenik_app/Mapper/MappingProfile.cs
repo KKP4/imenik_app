@@ -12,9 +12,9 @@ namespace imenik_app.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Imenik, ImenikResources>();
+            CreateMap<Kontakt, KontaktResources>();
 
-            CreateMap<ImenikResources, Imenik>()
+            CreateMap<KontaktResources, Kontakt>()
                 .ForMember(v => v.Id, opt => opt.Ignore());
         }
 

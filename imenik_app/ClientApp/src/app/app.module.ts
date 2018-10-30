@@ -9,8 +9,6 @@ import { ImenikService } from './services/imenik.service';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ImenikFormComponent } from './imenik-form/imenik-form.component';
 import { ImenikListComponent } from './imenik-list/imenik-list.component';
 import { DataTablesModule } from 'angular-datatables';
@@ -21,8 +19,6 @@ import * as $ from 'jquery'
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     ImenikFormComponent,
     ImenikListComponent
   ],
@@ -39,8 +35,6 @@ import * as $ from 'jquery'
       { path: 'imenik', component: ImenikListComponent },
       { path: 'home', component: HomeComponent },
       { path: '**', redirectTo: 'home' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
   providers: [
