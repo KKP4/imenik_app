@@ -9,10 +9,6 @@ using imenik_app.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
-
-
-
 namespace imenik_app.Controllers
 {
     [Route("api/imenik")]
@@ -31,22 +27,23 @@ namespace imenik_app.Controllers
         public async Task<IEnumerable<KontaktResources>> GetKontakti(KontaktResources imenikResource)
         {
             var kontakti = await context.Kontakti.ToListAsync();
-            
+
             return mapper.Map<IEnumerable<Kontakt>, IEnumerable<KontaktResources>>(kontakti);
 
-            
+
 
         }
-       
+
         [HttpPost]
         public async Task<IActionResult> CreateKontakt([FromBody] KontaktResources kontaktResource)
         {
-            if (!ModelState.IsValid) { 
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
 
             var kontakt = mapper.Map<KontaktResources, Kontakt>(kontaktResource);
-            
+
 
             context.Kontakti.Add(kontakt);
             await context.SaveChangesAsync();
@@ -56,14 +53,15 @@ namespace imenik_app.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateImenik(int id, [FromBody] KontaktResources imenikResource)
         {
-            if (!ModelState.IsValid) { 
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
             var kontakt = await context.Kontakti.FindAsync(id);
             if (kontakt == null)
                 return NotFound();
             mapper.Map<KontaktResources, Kontakt>(imenikResource, kontakt);
-            
+
             await context.SaveChangesAsync();
             return Ok(kontakt);
 
@@ -72,7 +70,8 @@ namespace imenik_app.Controllers
         public async Task<IActionResult> GetKontakt(int id)
         {
             var kontakt = await context.Kontakti.FindAsync(id);
-            if (kontakt == null) { 
+            if (kontakt == null)
+            {
                 return NotFound();
             }
             var kontaktResource = mapper.Map<Kontakt, KontaktResources>(kontakt);

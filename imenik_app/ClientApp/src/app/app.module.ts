@@ -38,7 +38,8 @@ import * as $ from 'jquery'
     ])
   ],
   providers: [
-    ImenikService
+    ImenikService,
+    
   ],
   bootstrap: [AppComponent]
 })

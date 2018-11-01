@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImenikService } from './../services/imenik.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-imenik-form',
   templateUrl: './imenik-form.component.html',
@@ -55,11 +56,15 @@ export class ImenikFormComponent implements OnInit {
     }
 
     else {
-
       this.imenikService.create(this.kontakt)
-        .subscribe(x => {
-          this.router.navigate(['/imenik'])
-        });
+        .subscribe(
+          x => {
+            this.router.navigate(['/imenik'])
+          },
+          err => {
+            console.error(err);
+          }
+        );
 
     }
   }

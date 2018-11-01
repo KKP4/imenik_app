@@ -25,8 +25,8 @@
 
   <div class="form-group">
     <label for="publisherName">Telefonska Številka</label>
-    <input type="text" id="telStevilka" class="form-control" [(ngModel)]="kontakt.telStevilka" name="telStevilka" required #telStevilka="ngModel">
-    <div class="alert alert-danger" *ngIf="telStevilka.touched && !telStevilka.valid">Vnesi telefonsko številko</div>
+    <input type="text" id="telStevilka" class="form-control" [(ngModel)]="kontakt.telStevilka" name="telStevilka" required minlength="9" maxlength="13" #telStevilka="ngModel">
+    <div class="alert alert-danger" *ngIf="telStevilka.touched && !telStevilka.valid">Vnesi telefonsko številko (9 do 13 številk)</div>
   </div>
 
   <input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="Dodaj" />
